@@ -22,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className} antialiased min-h-screen w-full`}>
         <IngredientsProvider>
           <RecipesProvider>{children}</RecipesProvider>
         </IngredientsProvider>

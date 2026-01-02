@@ -8,7 +8,9 @@ import { FormEvent, useId, useState } from "react";
 import Ingredient from "./_ui/Ingredient";
 import { Unit } from "../_types/ingredient";
 import { useIngredients } from "../_hooks/useIngredients";
+import { useRouter } from "next/navigation";
 import { useRecipes } from "../_hooks/useRecipes";
+import { Navigation } from "../_utils/navigation";
 
 export default function IngredientsPage() {
   const ingredientInput = useId();
@@ -16,7 +18,8 @@ export default function IngredientsPage() {
   const unitInput = useId();
   const [ingredient, setIngredient] = useState<string>("");
   const { ingredients, addIngredient } = useIngredients();
-  const { generateRecipes } = useRecipes();
+  const { createRecipes } = useRecipes();
+  const router = useRouter();
 
   function onSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -32,7 +35,7 @@ export default function IngredientsPage() {
   }
 
   return (
-    <div className="flex justify-center items-center p-4 min-h-screen w-screen">
+    <div className="flex justify-center items-center p-4 min-h-screen w-full">
       <main className="flex flex-col rounded-3xl w-full max-w-md shadow-xl">
         <header className="flex flex-col items-center gap-y-2 px-6 py-8 w-full bg-linear-to-r from-[#FF6900] to-[#FE9A00] rounded-t-3xl">
           <div className="flex items-center gap-x-3">
@@ -139,8 +142,11 @@ export default function IngredientsPage() {
             </section>
           )}
           <button
+            onClick={() => {
+              createRecipes();
+              router.push(Navigation.RECIPESUGGESTIONS);
+            }}
             disabled={ingredients.length === 0}
-            onClick={() => generateRecipes()}
             className="flex justify-center items-center mt-6 gap-x-4 h-12 text-lg font-medium bg-linear-to-r from-[#ff6900] enabled:hover:from-[#e35706] enabled:active:from-[#e35706] to-[#fe9a00] enabled:hover:to-[#d37809] enabled:active:to-[#d37809] opacity-50 enabled:opacity-100 rounded-lg shadow-lg cursor-pointer disabled:cursor-default transition-all"
           >
             <Image

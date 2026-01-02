@@ -4,6 +4,50 @@ import { IngredientsProvider } from "../_contexts/IngredientsContext";
 import IngredientsPage from "./page";
 import { useRouter } from "next/navigation";
 import { RecipesProvider } from "../_contexts/RecipesContext";
+import { generateRecipes } from "../_server-functions/generateRecipes";
+
+const mockRecipesJSON = JSON.stringify([
+  {
+    name: "Garlic Chicken",
+    description: "Simple garlic chicken.",
+    prepTime: 10,
+    cookTime: 20,
+    servings: 2,
+    calories: 420,
+    protein: 38,
+    carbs: 3,
+    fats: 28,
+    ingredients: [
+      { ingredient: "Chicken breast", quantity: 2, unit: "piece" },
+      { ingredient: "Garlic", quantity: 3, unit: "clove" },
+    ],
+    instructions: ["Cook chicken", "Add garlic"],
+  },
+  {
+    name: "Tomato Pasta",
+    description: "Quick tomato pasta.",
+    prepTime: 5,
+    cookTime: 15,
+    servings: 2,
+    calories: 480,
+    protein: 14,
+    carbs: 65,
+    fats: 12,
+    ingredients: [
+      { ingredient: "Pasta", quantity: 200, unit: "g" },
+      { ingredient: "Tomato", quantity: 2, unit: "piece" },
+    ],
+    instructions: ["Boil pasta", "Add tomatoes"],
+  },
+]);
+
+jest.mock("../_server-functions/generateRecipes", () => ({
+  generateRecipes: jest.fn(),
+}));
+
+jest.mock("@/app/_server-functions/generateImages", () => ({
+  generateImages: jest.fn(),
+}));
 
 jest.mock("next/navigation", () => ({
   useRouter: jest.fn(),
@@ -17,6 +61,7 @@ describe("IngredientsPage", () => {
     (useRouter as jest.Mock).mockReturnValue({
       push: pushMock,
     });
+    (generateRecipes as jest.Mock).mockResolvedValue(mockRecipesJSON);
     render(
       <IngredientsProvider>
         <RecipesProvider>
