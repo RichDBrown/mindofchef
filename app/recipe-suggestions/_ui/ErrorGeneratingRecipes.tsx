@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Error from "@/public/exclamationmark.triangle.svg";
+import Error from "@/public/exclamationmark-triangle.svg";
 import { useRecipes } from "@/app/_hooks/useRecipes";
 
 export default function ErrorGeneratingRecipes() {
