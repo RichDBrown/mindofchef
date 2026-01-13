@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@google/genai": "^1.35.0",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
