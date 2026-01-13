@@ -1,65 +1,119 @@
 import Image from "next/image";
+import Logo from "@/public/logo.svg";
+import Wand from "@/public/wand-and-sparkles.svg";
+import Clock from "@/public/clock.svg";
+import Leaf from "@/public/leaf.svg";
+import Heart from "@/public/heart.svg";
+import Link from "next/link";
+import Sparkles from "@/public/sparkles.svg";
+import { Navigation } from "./_utils/navigation";
 
-export default function Home() {
+export default function LandingPage() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
+    <main className="flex flex-col justify-center items-center min-h-screen w-full px-4 py-12">
+      <div className="flex justify-center items-center w-24 h-24 bg-linear-to-br from-orange-500 to-amber-500 rounded-3xl shadow-2xl">
         <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+          src={Logo}
+          alt="MindOfChef logo."
+          unoptimized={true}
+          priority={true}
+          className="w-14 h-auto"
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+      </div>
+      <h1 className="mt-8 text-5xl font-medium text-transparent bg-linear-to-r from-orange-600 to-amber-600 bg-clip-text">
+        MindOfChef
+      </h1>
+      <p className="mt-2 text-lg text-gray-600">AI-Powered Recipe Creator</p>
+      <h2 className="mt-6 max-w-md text-xl text-gray-700 text-center">
+        Transform your ingredients into delicious recipes with the power of AI
+      </h2>
+      <section className="grid grid-cols-[auto_1fr] mt-8 p-6 gap-4 max-w-md bg-white rounded-2xl shadow-xl">
+        <div className="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full">
+          <Image
+            src={Wand}
+            alt=""
+            unoptimized={true}
+            priority={true}
+            className="h-5 w-auto"
+          />
+        </div>
+        <div>
+          <h3 className="mb-1 text-lg font-medium text-gray-900">
+            AI-generated recipes
+          </h3>
+          <p className="text-sm text-gray-600">
+            Get personalized recipe suggestions based on your available
+            ingredients
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+        <div className="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full">
+          <Image
+            src={Clock}
+            alt=""
+            unoptimized={true}
+            priority={true}
+            className="h-auto w-5"
+          />
         </div>
-      </main>
-    </div>
+        <div>
+          <h3 className="mb-1 text-lg font-medium text-gray-900">
+            Quick & easy
+          </h3>
+          <p className="text-sm text-gray-600">
+            Save time with clear prep times, cook times, and step-by-step
+            instructions
+          </p>
+        </div>
+        <div className="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full">
+          <Image
+            src={Leaf}
+            alt=""
+            unoptimized={true}
+            priority={true}
+            className="h-auto w-5"
+          />
+        </div>
+        <div>
+          <h3 className="mb-1 text-lg font-medium text-gray-900">
+            Nutritional info
+          </h3>
+          <p className="text-sm text-gray-600">
+            Track calories, protein, carbs, and fats for every recipe
+          </p>
+        </div>
+        <div className="flex items-center justify-center w-10 h-10 bg-orange-100 rounded-full">
+          <Image
+            src={Heart}
+            alt=""
+            unoptimized={true}
+            priority={true}
+            className="h-auto w-5"
+          />
+        </div>
+        <div>
+          <h3 className="mb-1 text-lg font-medium text-gray-900">
+            Reduce food waste
+          </h3>
+          <p className="text-sm text-gray-600">
+            Make the most of what you have and discover new recipe ideas
+          </p>
+        </div>
+      </section>
+      <Link
+        href={Navigation.INGREDIENTS}
+        className="flex justify-center items-center gap-x-4 mt-8 py-3 w-full max-w-md text-lg font-semibold bg-linear-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 active:from-orange-600 active:to-amber-600 rounded-lg shadow-2xl hover:scale-105 active:scale-105 transition-all"
+      >
+        <Image
+          src={Sparkles}
+          alt="Get started."
+          unoptimized={true}
+          className="w-4 h-auto"
+        />
+        Get started
+      </Link>
+      <p className="mt-4 text-sm text-gray-500">
+        No sign-up required &bull; Free to use
+      </p>
+    </main>
   );
 }
