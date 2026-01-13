@@ -12,7 +12,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://mindofchef.com"),
+  metadataBase: new URL("https://www.mindofchef.com/"),
   title: "MindOfChef | AI-Powered Recipe Creator",
   description:
     "MindOfChef is an AI recipe generator that creates personalized recipes from the ingredients you have. Discover what to cook in seconds.",
